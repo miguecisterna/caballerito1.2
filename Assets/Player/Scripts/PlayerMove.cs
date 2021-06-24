@@ -113,7 +113,7 @@ public class PlayerMove : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey("d") || Input.GetKey("a"))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             animator.SetBool("isDashing",true);
             isDashing = true;
@@ -130,7 +130,6 @@ public class PlayerMove : MonoBehaviour
 
         if(isDashing)
         {
-            currentDashTimer -= Time.deltaTime;
             animator.SetBool("isWalking",false);
 
             if (isLookingRight)
@@ -143,6 +142,7 @@ public class PlayerMove : MonoBehaviour
                rb2D.velocity = new Vector2(-dashForce,rb2D.velocity.y);
             }
 
+            currentDashTimer -= Time.deltaTime;
          }
 
         if (currentDashTimer <= 0)
